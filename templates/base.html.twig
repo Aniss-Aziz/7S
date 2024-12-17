@@ -18,9 +18,11 @@
             <img src="{{asset('images/logonoir.png')}}" class="object-fit-cover img-logo ms-3" width="85px">
 
                 <div class="d-flex malvoyant-font justify-content-center align-items-center">
-                    <a class="nav-link active me-3" aria-current="page" href="#">Home</a>
-                    <a class="nav-link me-3" href="#">Features</a>
-                    <a class="nav-link me-3" href="#">Pricing</a>
+
+                    <a class="nav-link me-3" href="#">Film</a>
+                    <a class="nav-link me-3" href="#">Cinéma</a>
+                    <a class="nav-link me-3" href="#">Actualités</a>
+                    <a class="nav-link active me-3" aria-current="page" href="/">A propos</a>
                     <div>
                         <img style="filter: contrast(0.3);" id="icon" class="me-3" src="{{asset('images/croissant-de-lune.png')}}" alt="mode malvoyant">
 
@@ -31,9 +33,24 @@
     </nav>
     <body>
         {% block body %}{% endblock %}
+        <footer class="my-footer mt-5 pb-5">
+            <div class="container-fluid">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-4">
+                        <img src="{{asset('images/logo-noir.png')}}" class="img-logo position-relative w-50 ms-3">
+                    </div>
+                    <div class="col-md-4 malvoyant-font d-flex flex-column justify-content-center align-items-center">
+                        <a class="nav-link " href="#">Mentions légales</a>
+                        <a class="nav-link " href="#">Nous contacter</a>
+                    </div>
+                    <div class="col-md-4 malvoyant-font d-flex flex-column justify-content-center align-items-center">
+                        <a class="nav-link" href="#">Conditions générales d’utilisation</a>
+                        <a class="nav-link" href="#">Politique de protection des données personnelles</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-
     </body>
 </html>
