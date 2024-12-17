@@ -8,6 +8,7 @@ icon.onclick = function(){
         logo.src = "images/logo-blanc.png";
         logo_footer.src = "images/logo-blanc.png";
         icon.style.filter = "invert(1)"
+
     }
     else {
         logo.src = "images/logonoir.png";
