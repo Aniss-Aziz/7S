@@ -1,0 +1,38 @@
+#icon {
+    width: 25px;
+    cursor: pointer;
+    object-fit: cover;
+    height: 25px;
+}
+
+:root{
+    --primary-color: #fff;
+    --secondary-color: #212121;
+
+}
+
+.dark-theme{
+    --primary-color: #212121;
+    --secondary-color: #fff;
+}
+
+.nav-handicap{
+    background-color: var(--primary-color) !important;
+}
+
+.navbar-light{
+    color: var(--secondary-color) !important;
+}
+
+body{
+   height: 100vh;
+   background-color: var(--primary-color) !important;
+}
+
+.malvoyant-font{
+    color: var(--secondary-color) !important;
+}
+
+.nav-theme{
+    background-color: var(--primary-color) !important;
+}
