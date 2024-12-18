@@ -17,12 +17,14 @@
     </head>
     <nav class="navbar nav-theme navbar-expand-lg mt-2 bg-body-tertiary">
         <div class="container-fluid">
+            <a href="{{ path('app_home') }}" >
+                <img src="{{asset('images/logonoir.png')}}" class="object-fit-cover img-logo ms-3" width="85px">
 
-            <img src="{{asset('images/logonoir.png')}}" class="object-fit-cover img-logo ms-3" width="85px">
+            </a>
 
                 <div class="d-flex malvoyant-font justify-content-center align-items-center">
 
-                    <a class="nav-link me-3" href="#">Film</a>
+                    <a class="nav-link me-3" href="{{ path('app_film_list') }}">Film</a>
                     <a class="nav-link me-3" href="#">Cinéma</a>
                     <a class="nav-link me-3" href="#">Actualités</a>
                     <a class="nav-link active me-3" aria-current="page" href="#">A propos</a>
@@ -48,7 +50,7 @@
                     </div>
                     <div class="col-md-4 malvoyant-font d-flex flex-column justify-content-center align-items-center">
                         <a class="nav-link text-center text-nowrap mt-3" href="#">Conditions générales d’utilisation</a>
-                        <a class="nav-link text-center text-nowrap mt-3" href="#">Politique de protection des données personnelles</a>
+                        <a class="nav-link text-center mt-3" href="#">Politique de protection des données personnelles</a>
                     </div>
                 </div>
             </div>

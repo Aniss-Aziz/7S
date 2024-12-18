@@ -25,8 +25,7 @@ class Film
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $accessibilite = null;
+    #[ORM\Column(type: 'json')] private array $accessibilite = [];
 
     #[ORM\Column(length: 255)]
     private ?string $realisateur = null;
@@ -42,6 +41,8 @@ class Film
     {
         $this->cinemas = new ArrayCollection();
     }
+
+    public function getAccessibilite(): array { return $this->accessibilite; } public function setAccessibilite(array $accessibilite): static { $this->accessibilite = $accessibilite; return $this; }
 
     public function getId(): ?int
     {
@@ -97,17 +98,6 @@ class Film
         return $this;
     }
 
-    public function getAccessibilite(): ?string
-    {
-        return $this->accessibilite;
-    }
-
-    public function setAccessibilite(?string $accessibilite): static
-    {
-        $this->accessibilite = $accessibilite;
-
-        return $this;
-    }
 
     public function getCinemas(): Collection
     {

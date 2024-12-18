@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des films{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 mt-4">
+                <h1 class="text-center malvoyant-font">Les films à l’affiche</h1>
+            </div>
+        </div>
+        <div class="row d-flex flex-column justify-content-end align-items-end">
+            <div class="col-md-1 ">
+                <div class="dropdown">
+                    <button class="btn btn-secondary nav-theme-2 malvoyant-font-2 dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false"> Filtre
+                    </button>
+                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="{{ path('app_film_list') }}">Tous</a></li>
+                        <li><a class="dropdown-item"
+                               href="{{ path('app_film_list', {accessibilite: 'Personne sourdes'}) }}">Personne sourdes</a>
+                        </li>
+                        <li><a class="dropdown-item"
+                               href="{{ path('app_film_list', {accessibilite: 'Personnes Malvoyantes ou non voyantes'}) }}">Personnes
+                                Malvoyantes ou non voyantes</a></li>
+                        <li><a class="dropdown-item"
+                               href="{{ path('app_film_list', {accessibilite: 'Fauteuil roulant'}) }}">Fauteuil roulant</a>
+                        </li>
+                        <li><a class="dropdown-item"
+                               href="{{ path('app_film_list', {accessibilite: 'Protese auditive'}) }}">Protese auditive</a>
+                        </li>
+                        <li><a class="dropdown-item"
+                               href="{{ path('app_film_list', {accessibilite: 'Assistance médicale'}) }}">Assistance
+                                médicale</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_film_list', {accessibilite: 'Muet'}) }}">Muet</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-around align-items-center">
+            {% for film in films %}
+                <div class="col-lg-4 mt-5 col-md-4">
+                    <div class="card position-relative w-100" style="width: 18rem;">
+                        <img style="object-position: top;" src="{{ film.image }}" class="card-img-top object-fit-cover"
+                             height="270px" alt="{{ film.titre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ film.titre }}</h5>
+                            <p class="card-text">Réalisateur: {{ film.realisateur }}</p>
+                            <p class="card-text">Date de sortie: {{ film.dateSortie|date('d/m/Y') }}</p>
+                        </div>
+                        <div class="list-group border-0 mb-4 list-group-flush d-flex flex-row justify-content-around pb-3 pt-3 align-items-center">
+                            {% for accessibilite in film.accessibilite %}
+                                {% if accessibilite == 'personne sourdes' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-19.png') }}"
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% elseif accessibilite == 'Personnes Malvoyantes ou non voyantes' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-20.png') }}"
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% elseif accessibilite == 'Fauteuil roulant' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-21.png') }}"
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% elseif accessibilite == 'Protese auditive' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-22.png') }}"
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% elseif accessibilite == 'Assistance médicale' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-23.png') }}"
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% elseif accessibilite == 'Muet' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-24.png') }}"
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="mb-4 d-flex justify-content-around align-items-center">
+                            {% for cinema in film.cinemas %}
+                                <div class="d-flex flex-column justify-content-center">
+                                    <div class="border-1 border-prsnlz">
+                                        <p class="text-center mb-0">{{ cinema.seance }}</p>
+                                    </div>
+                                    <div class="text-center bg-dark prsnlz-border p-2">
+                                        <a style="font-size: 15px; cursor: pointer;"
+                                           class="text-white text-decoration-none">réservez</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}

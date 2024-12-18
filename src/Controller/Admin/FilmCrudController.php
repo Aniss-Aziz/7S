@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Film;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -26,7 +27,12 @@ class FilmCrudController extends AbstractCrudController
             TextField::new('titre'),
             TextareaField::new('description'),
             TextField::new('image'),
-            TextField::new('accessibilite'),
+            ChoiceField::new('accessibilite') ->setChoices([ 'Personne sourdes' => 'Personne sourdes',
+                'Personnes Malvoyantes ou non voyantes' => 'Personnes Malvoyantes ou non voyantes',
+                'Fauteuil roulant' => 'Fauteuil roulant',
+                'Protese auditive' => 'Protese auditive',
+                'Assistance médicale' =>  'Assistance médicale',
+                'Muet' => 'Muet']) ->allowMultipleChoices(),
             DateTimeField::new('dateSortie'),
             TextField::new('realisateur'),
             AssociationField::new('cinemas')

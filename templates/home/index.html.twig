@@ -4,50 +4,38 @@
 
 {% block body %}
 
-
-{#<div class="example-wrapper malvoyant-font">#}
-{#    <h1>Hello {{ controller_name }}! ✅</h1>#}
-
-{#    This friendly message is coming from:#}
-{#    <ul>#}
-{#        <li>Your controller at <code>C:/MAMP/htdocs/7S/src/Controller/HomeController.php</code></li>#}
-{#        <li>Your template at <code>C:/MAMP/htdocs/7S/templates/home/index.html.twig</code></li>#}
-{#    </ul>#}
-{#</div>#}
     <div id="carouselExampleCaptions" class="carousel mt-1 slide pb-4">
         <div class="carousel-indicators pb-5">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{asset('images/desktop-visuel.png')}}" class="d-block w-100" alt="...">
+                <img src="{{ asset('images/desktop-visuel.png') }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption carousel-text-shadow d-none d-md-block pb-5">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
+                    <h5>Jamais son mon psy</h5>
+                    <p>lorem ipsum</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{asset('images/heretic.png')}}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block pb-5">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{{asset('images/SaintEx.png')}}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block pb-5">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
+                <img src="{{ asset('images/kraven-carrousel.jpg') }}" class="d-block w-100" alt="...">
+                <div class="carousel-caption carousel-text-shadow d-none d-md-block pb-5">
+                    <h5>Kraven The Hunter</h5>
+                    <p>lorem ipsum</p>
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -58,64 +46,134 @@
                 <h1 class="text-center malvoyant-font">Film à l'affiche</h1>
             </div>
         </div>
-        <div class="row mt-5 d-flex justify-content-around align-items-center">
-            <div class="col-md-3">
-                <div class="card position-relative w-100" style="width: 18rem;">
-                    <img src="https://www.dropbox.com/scl/fi/kipdxbazywb3yjzxsi083/femmesaubalcon.png?rlkey=oj5dre6tr8hy181o7vvqbb3mw&st=0ag5b0hy&raw=1" class="card-img-top object-fit-cover" height="250px" alt="jamais son mon psy">
-                    <div class="card-body">
-                        <h5 class="card-title">Les femmes au balcon</h5>
-                        <p class="card-text">Réalisateur: Jean Edouard</p>
-                        <p class="card-text">Date de sortie: 01/01/2024</p>
+        <div class="row d-flex justify-content-around align-items-center">
+            {% for film in films %}
+                <div class="col-lg-4 mt-5 col-md-4">
+                    <div class="card position-relative w-100" style="width: 18rem;">
+                        <img style="object-position: top;" src="{{ film.image }}" class="card-img-top object-fit-cover" height="270px"
+                             alt="{{ film.titre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ film.titre }}</h5>
+                            <p class="card-text">Réalisateur: {{ film.realisateur }}</p>
+                            <p class="card-text">Date de sortie: {{ film.dateSortie|date('d/m/Y') }}</p>
+                        </div>
+                        <div class="list-group border-0 mb-4 list-group-flush d-flex flex-row justify-content-around pb-3 pt-3 align-items-center">
+                            {% for accessibilite in film.accessibilite %}
+                                {% if accessibilite == 'personne sourdes' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-19.png') }}" class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% elseif accessibilite == 'Personnes Malvoyantes ou non voyantes' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-20.png') }}" class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% elseif accessibilite == 'Fauteuil roulant' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-21.png') }}" class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% elseif accessibilite == 'Protese auditive' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-22.png') }}" class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% elseif accessibilite == 'Assistance médicale' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-23.png') }}" class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% elseif accessibilite == 'Muet' %}
+                                    <img src="{{ asset('images/picto-handicap/Group-24.png') }}" class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="mb-4 d-flex justify-content-around align-items-center">
+                            {% for cinema in film.cinemas %}
+                                <div class="d-flex flex-column justify-content-center">
+                                    <div class="border-1 border-prsnlz">
+                                        <p class="text-center mb-0">{{ cinema.seance }}</p>
+                                    </div>
+                                    <div class="text-center bg-dark prsnlz-border p-2">
+                                        <a style="font-size: 15px; cursor: pointer;"
+                                           class="text-white text-decoration-none">réservez</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
+                </div> {% endfor %}
+        </div>
+        <div class="row">
+               <div class="col-md-12 mt-5 d-flex justify-content-center flex-lg-row flex-column align-items-center">
+
+                       <a class="btn nav-theme-2 malvoyant-font-2 me-lg-5  text-center" href="{{ path('app_film_list') }}">Chosiir un Film</a>
+
+
+                       <a class="btn nav-theme-2 ms-lg-5 mt-md-4 mt-lg-0  malvoyant-font-2">Choisir un Cinéma</a>
+
+               </div>
+
+
+
+
+
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-12 mt-5 d-flex justify-content-center align-items-center">
+                <div class="position-relative nav-theme-2 p-2 w-75">
+                    <h2 class="text-center malvoyant-font-2">Nos partenaires</h2>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card position-relative w-100" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
+            <div class="col-md-12 d-flex mt-5 justify-content-around align-items-center">
+                <img src="{{ asset('images/Group-26.png') }}" class="object-fit-cover partenariat-1 ms-2 me-2" height="120px" width="120px">
+                <img src="{{ asset('images/Group-27.png') }}" class="object-fit-cover partenariat-2  ms-2 me-2" height="31px" width="150px">
+                <img src="{{ asset('images/Group-28.png') }}" class="object-fit-cover ms-2  me-2" height="120px" width="120px">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-5 d-flex justify-content-center align-items-center">
+                <div class="position-relative nav-theme-2 p-2 w-75">
+                    <h2 class="text-center malvoyant-font-2">FAQ</h2>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card position-relative w-100" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12 d-flex justify-content-center align-items-center">
+                <div class="accordion position-relative w-75" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Puis-je bénéficier d’une assistance pour entrer dans la salle ou m’installer ?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <li><strong>Oui, la plupart des salles de cinéma proposent une assistance pour les personnes en situation de handicap. </strong></li><br><br><li>Si vous avez besoin d’aide pour entrer dans la salle, vous installer ou accéder à votre place, le personnel du cinéma est formé pour vous accompagner. Nous vous recommandons de signaler vos besoins spécifiques lors de la réservation ou en arrivant à l’accueil, afin que l’équipe puisse se rendre disponible pour vous assister au mieux.
+                                </li><br><br><li>N’hésitez pas également à demander des informations sur les dispositifs mis en place pour votre confort, comme des sièges adaptés ou des espaces pour fauteuils roulants.</li>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Les accompagnateurs bénéficient-ils d’un tarif réduit ou d’une entrée gratuite ?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <li><strong> Oui, dans de nombreux cinémas, les accompagnateurs des personnes en situation de handicap peuvent bénéficier d’un tarif réduit, voire d’une entrée gratuite, selon les politiques de l’établissement. </strong><br><br><li>Cela s’applique généralement lorsque la personne handicapée présente une carte d’invalidité mentionnant la nécessité d’un accompagnateur (par exemple, avec la mention "tierce personne").
+                                <br><br><li>Nous vous conseillons de vous renseigner directement auprès du cinéma concerné ou de vérifier les conditions sur leur site internet pour connaître les modalités exactes.</li><br><br><li> N’oubliez pas d’apporter votre justificatif le jour de la séance pour bénéficier de ces avantages.</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Organisez-vous des séances adaptées pour les personnes atteintes de troubles sensoriels, comme des séances en lumière tamisée ou avec un volume sonore réduit ?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <li><strong>Oui, certains cinémas organisent des séances adaptées pour les personnes atteintes de troubles sensoriels, comme les troubles du spectre autistique ou les hypersensibilités sensorielles.</strong></li><br><br><li>  Ces séances, souvent appelées "séances inclusives" ou "séances sensorielles", se déroulent dans des conditions spécifiques :
+                                </li><br><li class="ms-5">La lumière reste tamisée pendant la projection, plutôt que d’être totalement éteinte.</li>
+                                <br><li class="ms-5">Le volume sonore est réduit pour éviter les nuisances auditives.</li>
+                                <br><li class="ms-5">Une ambiance plus tolérante est adoptée, permettant aux spectateurs de se déplacer ou de s’exprimer librement.</li><br>
+                                Ces séances visent à offrir un environnement plus confortable et accueillant pour tous.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <script src="{{ asset('js/app.js') }}"></script>
 {% endblock %}
 

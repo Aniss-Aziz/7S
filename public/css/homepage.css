@@ -9,3 +9,14 @@
 .img-logo{
     object-fit: contain;
 }
+
+.border-prsnlz{
+    border-width: 2px !important;
+    border-radius: 15px 15px 0px 0px;
+    padding: 13px;
+    border: 1px solid;
+}
+
+.prsnlz-border{
+    border-radius: 0px 0px 15px 15px;
+}
