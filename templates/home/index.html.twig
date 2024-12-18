@@ -3,10 +3,7 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+
 
 {#<div class="example-wrapper malvoyant-font">#}
 {#    <h1>Hello {{ controller_name }}! ✅</h1>#}
@@ -54,6 +51,70 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 mt-4">
+                <h1 class="text-center malvoyant-font">Film à l'affiche</h1>
+            </div>
+        </div>
+        <div class="row mt-5 d-flex justify-content-around align-items-center">
+            <div class="col-md-3">
+                <div class="card position-relative w-100" style="width: 18rem;">
+                    <img src="https://www.dropbox.com/scl/fi/kipdxbazywb3yjzxsi083/femmesaubalcon.png?rlkey=oj5dre6tr8hy181o7vvqbb3mw&st=0ag5b0hy&raw=1" class="card-img-top object-fit-cover" height="250px" alt="jamais son mon psy">
+                    <div class="card-body">
+                        <h5 class="card-title">Les femmes au balcon</h5>
+                        <p class="card-text">Réalisateur: Jean Edouard</p>
+                        <p class="card-text">Date de sortie: 01/01/2024</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card position-relative w-100" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card position-relative w-100" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
 {% endblock %}

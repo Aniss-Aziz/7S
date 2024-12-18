@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Film;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -25,6 +27,8 @@ class FilmCrudController extends AbstractCrudController
             TextareaField::new('description'),
             TextField::new('image'),
             TextField::new('accessibilite'),
+            DateTimeField::new('dateSortie'),
+            TextField::new('realisateur'),
             AssociationField::new('cinemas')
         ];
     }
