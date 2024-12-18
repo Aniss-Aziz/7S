@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AboutController!{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+       <div class="row">
+           <div class="col-md-12 mb-5 p-0 d-flex justify-content-center align-items-center">
+               <div class="position-relative nav-theme-2 p-4 w-100">
+                   <h2 class="text-center malvoyant-font-2">A propos</h2>
+               </div>
+           </div>
+       </div>
+        <div class="row flex-lg-row flex-column justify-content-center align-items-lg-start align-items-md-center">
+            <div class="col-lg-6 col-md-10">
+                <img src="{{asset('images/Group-32.png')}}" class="object-fit-cover position-relative w-100">
+            </div>
+            <div class="col-lg-5 col-md-10">
+                <p><li>Le 7e sens est une application web qui vise à rendre la culture cinématographique accessible à toutes et à tous. L’objectif est de faciliter les rencontres autour de séances de cinéma à Bordeaux et ses alentours. Des détails tels que les heures, les résumés et les lieux de projection sont répertoriés, ainsi que des pictogrammes pour faciliter la navigation.</li><br><br><li>Une carte interactive met en avant les cinémas inclusifs autour de Bordeaux, accessibles aux personnes en situation de handicap (PMR, sous-titres pour malentendants, etc…). L’application web propose également des actualités cinématographiques sous forme de vidéos.</li><br><br><li>  Ces vidéos sont sous-titrées ou peuvent sinon être écoutées en podcast, afin d’offrir une expérience enrichissante et équitable pour tous.
+
+                    Le projet s'inscrit dans cette démarche, visant à démocratiser l'accès à la culture cinématographique et à la rendre accessible au plus grand nombre.</li><br><br><li> En effet, la culture, et notamment le cinéma, joue un rôle central dans la création de lien social, d'enrichissement personnel et de compréhension du monde.
+
+                    Toutefois, des obstacles demeurent, qu'ils soient géographiques, économiques ou liés aux besoins spécifiques des personnes handicapées. Ce sont des barrières qui peuvent empêcher encore certaines personnes de profiter pleinement de cette richesse culturelle.</li><br><br>
+                   <li> 12 millions de Français sont concernés par un handicap, mais seulement 18% des salles de cinéma sont accessibles aux personnes à mobilité réduite et déficientes sensorielles.
+                    Il est donc crucial de renforcer ces 18% et de mettre en avant ces salles de cinéma pour encourager de véritables changements de l’expérience culturelle.</li></p>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
