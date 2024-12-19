@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block body %}
+    <h1>Actualités</h1>
+
+    <div class="actualites-list">
+        {% for actualite in actualites %}
+            <div class="actualite-item">
+                <h2>{{ actualite.titre }}</h2>
+                <p>{{ actualite.contenu|slice(0, 150) ~ '...' }}</p>
+                <a href="{{ path('app_actualite_show', { id: actualite.id }) }}">Lire la suite</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
