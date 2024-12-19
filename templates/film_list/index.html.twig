@@ -9,7 +9,7 @@
                 <h1 class="text-center malvoyant-font">Les films à l’affiche</h1>
             </div>
         </div>
-        <div class="row d-flex flex-column justify-content-end align-items-end">
+        <div class="row">
             <div class="col-md-1 ">
                 <div class="dropdown">
                     <button class="btn btn-secondary nav-theme-2 malvoyant-font-2 dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -53,22 +53,22 @@
                             {% for accessibilite in film.accessibilite %}
                                 {% if accessibilite == 'personne sourdes' %}
                                     <img src="{{ asset('images/picto-handicap/Group-19.png') }}"
-                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px" alt="picto personne sourdes">
                                 {% elseif accessibilite == 'Personnes Malvoyantes ou non voyantes' %}
                                     <img src="{{ asset('images/picto-handicap/Group-20.png') }}"
-                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px" alt="picto personnes Malvoyantes ou non voyantes">
                                 {% elseif accessibilite == 'Fauteuil roulant' %}
                                     <img src="{{ asset('images/picto-handicap/Group-21.png') }}"
-                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px" alt="picto fauteuil roulant">
                                 {% elseif accessibilite == 'Protese auditive' %}
                                     <img src="{{ asset('images/picto-handicap/Group-22.png') }}"
-                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px" alt="picto protese auditive">
                                 {% elseif accessibilite == 'Assistance médicale' %}
                                     <img src="{{ asset('images/picto-handicap/Group-23.png') }}"
-                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px" alt="picto assistance médicale">
                                 {% elseif accessibilite == 'Muet' %}
                                     <img src="{{ asset('images/picto-handicap/Group-24.png') }}"
-                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px">
+                                         class="object-fit-cover ms-2 me-2" height="50px" width="50px" alt="picto muet">
                                 {% endif %}
                             {% endfor %}
                         </div>
@@ -79,7 +79,7 @@
                                         <p class="text-center mb-0">{{ cinema.seance }}</p>
                                     </div>
                                     <div class="text-center bg-dark prsnlz-border p-2">
-                                        <a style="font-size: 15px; cursor: pointer;"
+                                        <a href="{{path('app_film_show', {id: film.id}) }}" style="font-size: 15px; cursor: pointer;"
                                            class="text-white text-decoration-none">réservez</a>
                                     </div>
                                 </div>

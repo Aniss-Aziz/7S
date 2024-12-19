@@ -13,7 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class FilmListController extends AbstractController
 {
-    #[Route('/film', name: 'app_film_list')] public function index(EntityManagerInterface $entityManager, Request $request): Response
+    #[Route('/film', name: 'app_film_list')]
+    public function index(EntityManagerInterface $entityManager, Request $request): Response
     {
         $search = new Search();
         $form = $this->createForm(SearchType::class, $search);
@@ -25,5 +26,18 @@ class FilmListController extends AbstractController
             $films = $entityManager->getRepository(Film::class)->findAll();
         }
         return $this->render('film_list/index.html.twig', ['films' => $films, 'selected_accessibilite' => $accessibilite,]);
+    }
+
+    #[Route('film/{id}', name: 'app_film_show')]
+    public function show(EntityManagerInterface $entityManager, int $id): Response
+    {
+        $film = $entityManager->getRepository(Film::class)->find($id);
+        if (!$film) {
+            throw $this->createNotFoundException('Le film n\'existe pas.');
+
+        }
+        $cinemas = $film->getCinemas();
+
+        return $this->render('film_list/show.html.twig', ['film' => $film, 'cinemas' => $cinemas]);
     }
 }
