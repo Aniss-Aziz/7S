@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\Film;
 use App\Entity\Cinema;
+use App\Entity\Actualite;
+
 
 class DashboardController extends AbstractDashboardController
 {
@@ -46,5 +48,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToRoute('Accueil', 'fa-solid fa-arrow-left', 'app_home');
         yield MenuItem::linkToCrud('Films', 'fas fa-film', Film::class);
         yield MenuItem::linkToCrud('Cinemas', 'fas fa-theater-masks', Cinema::class);
+        yield MenuItem::linkToCrud('Actualités', 'fas fa-newspaper', Actualite::class);
+
     }
 }
