@@ -7,11 +7,12 @@
     <p>{{ actualite.datePublication|date('d/m/Y') }}</p>
     <p>{{ actualite.contenu }}</p>
     {% if actualite.video %}
-        <div class="video">
-            <video controls>
-                <source src="{{ actualite.video }}" type="video/mp4">
-                Votre navigateur ne supporte pas la lecture vidéo.
-            </video>
+        <div class="video-container">
+            <iframe width="560" height="315"
+                    src="{{ actualite.video | replace({'watch?v=': 'embed/'}) }}"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
         </div>
     {% endif %}
 {% endblock %}

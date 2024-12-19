@@ -6,6 +6,7 @@ use App\Repository\CinemaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CinemaRepository::class)]
 #[ORM\Table(name: 'cinema')]
@@ -34,9 +35,17 @@ class Cinema
     #[ORM\ManyToMany(targetEntity: Film::class, mappedBy: 'cinemas')]
     private Collection $films;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $accessibilite = null;
+
+    #[ORM\Column(length: 255, nullable: false)]
+    #[Assert\NotBlank(message: 'L’image est obligatoire.')]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->films = new ArrayCollection();
+        $this->image = ''; // Ajout d'une valeur par défaut
     }
 
     public function getId(): ?int
@@ -130,6 +139,29 @@ class Cinema
 
     public function __toString(): string {
         return $this->nom;
+    }
+
+    public function getAccessibilite(): ?string
+    {
+        return $this->accessibilite;
+    }
+
+    public function setAccessibilite(?string $accessibilite): self
+    {
+        $this->accessibilite = $accessibilite;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+        return $this;
     }
 
 }

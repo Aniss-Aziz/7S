@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 
 class CinemaCrudController extends AbstractCrudController
 {
@@ -19,14 +20,20 @@ class CinemaCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [ IdField::new('id')->hideOnForm(),
+        return [
+            IdField::new('id')->onlyOnIndex(),
             TextField::new('nom'),
             TextField::new('portable'),
             TextField::new('email'),
             TextField::new('adresse'),
             TextField::new('seance'),
-            AssociationField::new('films')
-            ];
+            TextField::new('accessibilite'),
+            ImageField::new('image')
+                ->setUploadDir('public/uploads/cinemas')
+                ->setBasePath('/uploads/cinemas')
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(true),
+        ];
 
     }
 

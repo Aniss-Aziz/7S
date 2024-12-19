@@ -3,15 +3,24 @@
 {% block title %}Actualités{% endblock %}
 
 {% block body %}
-    <h1>Actualités</h1>
-
-    <div class="actualites-list">
-        {% for actualite in actualites %}
-            <div class="actualite-item">
-                <h2>{{ actualite.titre }}</h2>
-                <p>{{ actualite.contenu|slice(0, 150) ~ '...' }}</p>
-                <a href="{{ path('app_actualite_show', { id: actualite.id }) }}">Lire la suite</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 mt-4">
+                <h1 class="text-center malvoyant-font">Actualités</h1>
             </div>
-        {% endfor %}
+        </div>
+        <div class="row d-flex justify-content-around align-items-center">
+            {% for actualite in actualites %}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ actualite.titre }}</h5>
+                            <p class="card-text">{{ actualite.contenu|slice(0, 150) ~ '...' }}</p>
+                            <a href="{{ path('app_actualite_show', { id: actualite.id }) }}" class="btn btn-primary">Lire la suite</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
