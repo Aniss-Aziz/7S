@@ -82,3 +82,29 @@ footer{
     border-top: 5px solid var(--secondary-color) !important;;
     padding-top: 40px;
 }
+
+
+.cinema-map img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+}
+
+.cinema-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cinema-list .card {
+    border-radius: 10px;
+}
+
+.card-img-top {
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.overflow-auto {
+    padding-right: 10px; /* Ajoute un peu d'espace entre le contenu et la barre de défilement */
+}

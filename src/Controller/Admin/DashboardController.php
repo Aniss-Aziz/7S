@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Actualite;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -45,6 +46,7 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::linkToRoute('Accueil', 'fa-solid fa-arrow-left', 'app_home');
         yield MenuItem::linkToCrud('Films', 'fas fa-film', Film::class);
+        yield MenuItem::linkToCrud('Actualités', 'fas fa-newspaper', Actualite::class);
         yield MenuItem::linkToCrud('Cinemas', 'fas fa-theater-masks', Cinema::class);
     }
 }

@@ -42,25 +42,43 @@ class Film
         $this->cinemas = new ArrayCollection();
     }
 
-    public function getAccessibilite(): array { return $this->accessibilite; } public function setAccessibilite(array $accessibilite): static { $this->accessibilite = $accessibilite; return $this; }
+    public function getAccessibilite(): array
+    {
+        return $this->accessibilite;
+    }
+
+    public function setAccessibilite(array $accessibilite): static
+    {
+        $this->accessibilite = $accessibilite;
+        return $this;
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getRealisateur(): ?string {
+    public function getRealisateur(): ?string
+    {
         return $this->realisateur;
     }
 
-    public function setRealisateur(string $realisateur): static {
+    public function setRealisateur(string $realisateur): static
+    {
         $this->realisateur = $realisateur;
         return $this;
     }
 
-    public function getDateSortie(): ?\DateTimeInterface { return $this->dateSortie;}
+    public function getDateSortie(): ?\DateTimeInterface
+    {
+        return $this->dateSortie;
+    }
 
-    public function setDateSortie(?\DateTimeInterface $dateSortie): static { $this->dateSortie = $dateSortie; return $this; }
+    public function setDateSortie(?\DateTimeInterface $dateSortie): static
+    {
+        $this->dateSortie = $dateSortie;
+        return $this;
+    }
 
     public function getTitre(): ?string
     {
@@ -120,7 +138,8 @@ class Film
         return $this;
     }
 
-    public function __toString(): string {
+    public function __toString(): string
+    {
         return $this->titre;
     }
 
